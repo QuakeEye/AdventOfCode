@@ -1,5 +1,7 @@
 const fs = require("fs");
 const fileName = process.argv[2];
+const printAllSolvesInput = process.argv[3];
+const printAllSolves: boolean = printAllSolvesInput === "t" ? true : false;
 export {};
 
 const fileContents : string = fs.readFileSync(fileName, "utf8");
@@ -60,5 +62,5 @@ for (let y = 0; y < height; y++)
             directions.forEach(direction => checkWord(x, y, direction));
 
 
-console.log(solves);
+if (printAllSolves) console.log(solves);
 console.log("Amount of", wordToSearch, ":", solves.length);

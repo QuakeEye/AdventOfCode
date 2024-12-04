@@ -31,6 +31,8 @@ type indexEntry = [
 
 // Variables
 const regex = new RegExp("mul\\(\\d+,\\d+\\)", "g");
+const dontRegex = new RegExp("don't\\(\\)", "g");
+const doRegex = new RegExp("do\\(\\)", "g");
 const numbersRegex = new RegExp("\\d+,\\d+");
 
 let mulMatches: indexEntry[] = [];
@@ -50,6 +52,18 @@ while ((match = regex.exec(fileContents)) !== null) {
     mulMatches = mulMatches.concat([[match.index, entryType.mulMatch, numbers]]);
 }
 
+while ((match = dontRegex.exec(fileContents)) !== null) {
+    if(match === null) break;
+
+    dontMatches = dontMatches.concat([[match.index, entryType.dontMatch]]);
+}
+
+while ((match = doRegex.exec(fileContents)) !== null) {
+    if(match === null) break;
+
+    doMatches = doMatches.concat([[match.index, entryType.doMatch]]);
+}
+
 
 // Move through sorted array to perform multiplications when possible
 let indexArr: indexEntry[] = [];
@@ -64,6 +78,10 @@ for (let i = 0; i < indexArr.length; i++) {
         const numbers: number[] = indexArr[i][2];
         totalCounter += numbers[0] * numbers[1];
     }
+
+    if (indexArr[i][1] === entryType.doMatch) doing = true;
+
+    if (indexArr[i][1] === entryType.dontMatch) doing = false;
 }
 
 console.log(totalCounter);

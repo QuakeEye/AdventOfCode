@@ -1,5 +1,7 @@
 const fs = require("fs");
 const fileName = process.argv[2];
+const printAllSolvesInput = process.argv[3];
+const printAllSolves: boolean = printAllSolvesInput === "t" ? true : false;
 export {};
 
 const fileContents : string = fs.readFileSync(fileName, "utf8");
@@ -24,7 +26,7 @@ const checkChar: (a: string, b: string) => number = (a: string, b: string) => a 
 // Algorithm
 let solves: [[xCenter: number, yCenter: number]][] = [];
 
-const checkXMas = (x, y) => {
+const checkXMas = (x: number, y: number) => {
     const topLeft = getLetterFromGrid(x - 1, y - 1);
     const topRight = getLetterFromGrid(x + 1, y - 1);
     const bottomLeft = getLetterFromGrid(x - 1, y + 1);
@@ -53,5 +55,5 @@ for (let y = 1; y < height - 1; y++)
             checkXMas(x, y);
 
 
-console.log(solves);
+if (printAllSolves) console.log(solves);
 console.log("Amount of X Masses:", solves.length);

@@ -13,13 +13,11 @@ input.split("\n").forEach((line) => {
     rightList.push(parseInt(right));
 });
 
-const sortedLeftList = leftList.sort((a, b) => a - b);
-const sortedRightList = rightList.sort((a, b) => a - b);
-
-const tupledList = sortedLeftList.map((left, index) => [left, sortedRightList[index]]);
-
 let counter = 0;
 
-for (const [left, right] of tupledList) counter += Math.abs(left - right);
+for (const left of leftList)
+    for (const right of rightList)
+        if (left === right)
+            counter += left;
 
 console.log(counter);
