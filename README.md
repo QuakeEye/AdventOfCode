@@ -1,4 +1,4 @@
-![test](assets/images/winter2024.jpg)
+![Cover Image](https://raw.githubusercontent.com/QuakeEye/AdventOfCode/refs/heads/main/assets/images/winter2024.jpg)
 > Photo by [Aaron Burden](https://unsplash.com/photos/shallow-focus-photography-of-bubble-on-leaves-xtIYGB0KEqc) on [Unsplash](https://unsplash.com/)
 
 ---
