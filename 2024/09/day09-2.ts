@@ -1,5 +1,3 @@
-import { printStrArr } from "../lib";
-
 const fs = require("fs");
 const fileName = process.argv[2];
 export {};
@@ -81,13 +79,14 @@ const moveBlock : (from: Block, to: Block) => void = (from: Block, to: Block) =>
     }
 }
 
-printStrArr(memory);
 while (readPointer >= 0) {
     const from : Block = readBlock();
     if (from.character === '.') continue;
 
     const to : Block = doesBlockFit(from);
     if (to === null) continue;
+
+    if (from.startPointer <= to.startPointer) continue;
 
     if (parseInt(from.character) >= lowestID) break;
     lowestID = parseInt(from.character);
