@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^22.10.1"
+  },
+  "dependencies": {
+    "jimp": "^1.6.0"
   }
 }
